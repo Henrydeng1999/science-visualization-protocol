@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黑体辐射与普朗克</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0e1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #canvas-container { line-height: 0; }
+    .controls {
+      width: 220px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .control-group { margin-bottom: 20px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #58a6ff;
+    }
+    .value {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #30363d;
+    }
+    .explain { width: 100%; max-width: 940px; margin: 28px auto 0; }
+    .explain .card {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+    }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p { color: #c9d1d9; line-height: 1.7; font-size: 14px; margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+    .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>黑体辐射与普朗克</h1>
+    <p><a href="../../index.html">← 返回首页</a></p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="temp">温度 T</label>
+        <input type="range" id="temp" min="1000" max="12000" value="5800" step="100">
+        <div class="value" id="temp-value">5800 K</div>
+      </div>
+      <div class="hint">
+        任何有温度的物体都会辐射。温度升高时，辐射光谱的峰值波长变短（维恩定律），物体颜色从红热变到白、再到蓝白，总辐射按 T⁴ 急剧增大。<br><br>
+        正是这条曲线让普朗克提出「能量只能一份份地发出」，开启了量子物理。
+      </div>
+    </div>
+  </main>
+
+  <section class="explain">
+    <div class="card">
+      <h2>原理解析</h2>
+      <p>任何有温度的物体都会向外辐射电磁波，光谱的形状只由<strong>温度</strong>决定。温度升高时，辐射的<strong>峰值波长变短</strong>（维恩位移定律），物体颜色从暗红 → 橙 → 黄白 → 蓝白；同时<strong>总辐射按 T⁴ 猛增</strong>（温度翻倍，辐射变 16 倍）。难点在于：经典物理预言短波辐射会趋于无穷（「紫外灾难」），与实验完全不符。1900 年普朗克大胆假设能量只能<strong>一份一份（量子化）</strong>地发出，才第一次算对了这条曲线——量子物理由此诞生。</p>
+    </div>
+    <div class="card">
+      <h2>生活中的例子</h2>
+      <ul>
+        <li>烧火钳或木炭加热时，先变暗红、再橙黄，越热越亮越偏白。</li>
+        <li>白炽灯的钨丝、电炉丝发光，都是高温热辐射。</li>
+        <li>灯泡上标的「色温」：2700K 暖黄、6500K 冷白，正是这个道理。</li>
+        <li>太阳约 5800K 偏白；夜空里偏红的恒星更凉、偏蓝的更热。</li>
+        <li>红外测温枪、热成像仪，靠探测物体的热辐射来读温度。</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="sketch.js"></script>
+</body>
+</html>

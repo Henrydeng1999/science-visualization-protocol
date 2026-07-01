@@ -1,0 +1,21 @@
+# Local editor and assistant state
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Package manager caches, if this project later adds tooling
+node_modules/
+.wrangler/
+.cloudflare/
+dist/
+build/

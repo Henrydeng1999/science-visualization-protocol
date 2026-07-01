@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>抛物运动</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0e1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #canvas-container { line-height: 0; }
+    .controls {
+      width: 220px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .control-group { margin-bottom: 20px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #58a6ff;
+    }
+    .value {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #30363d;
+    }
+    .explain { width: 100%; max-width: 940px; margin: 28px auto 0; }
+    .explain .card {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+    }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p { color: #c9d1d9; line-height: 1.7; font-size: 14px; margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+    .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>抛物运动</h1>
+    <p><a href="../../index.html">← 返回首页</a></p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="v0">初速度</label>
+        <input type="range" id="v0" min="10" max="100" value="50" step="1">
+        <div class="value" id="v0-value">50 m/s</div>
+      </div>
+      <div class="control-group">
+        <label for="angle">抛出角度</label>
+        <input type="range" id="angle" min="10" max="80" value="45" step="1">
+        <div class="value" id="angle-value">45°</div>
+      </div>
+      <div class="control-group">
+        <label for="g">重力加速度</label>
+        <input type="range" id="g" min="1" max="20" value="9.8" step="0.1">
+        <div class="value" id="g-value">9.8 m/s²</div>
+      </div>
+      <div class="hint">
+        物体抛出后只受重力作用，轨迹是一条抛物线。改变初速度、角度和重力，观察小球运动、射程和最大高度的变化。
+      </div>
+    </div>
+  </main>
+
+  <section class="explain">
+    <div class="card">
+      <h2>原理解析</h2>
+      <p>抛出去的物体可以拆成两个独立的运动：<strong>水平方向</strong>不受力，保持匀速；<strong>竖直方向</strong>只受重力，做匀加速（先减速上升、再加速下落）。两者叠加，轨迹就是一条抛物线。在相同初速度下，<strong>45° 抛射射得最远</strong>；抛得越快、越接近竖直，飞得越高。理论上水平射程 = v₀²·sin(2θ)/g，最大高度 = (v₀·sinθ)²/(2g)。</p>
+    </div>
+    <div class="card">
+      <h2>生活中的例子</h2>
+      <ul>
+        <li>投篮、踢出弧线球、把纸团扔进垃圾桶，走的都是抛物线。</li>
+        <li>花园浇水、喷泉的水柱，是一条条抛物线的水流。</li>
+        <li>跳远、铅球、标枪运动员都在用合适的角度争取更远的距离。</li>
+        <li>同样的力气，平射不如斜着抛得远——这就是 45° 的智慧。</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="sketch.js"></script>
+</body>
+</html>

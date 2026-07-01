@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光是一种波</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0e1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #canvas-container { line-height: 0; }
+    .controls {
+      width: 230px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .control-group { margin-bottom: 18px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #58a6ff;
+    }
+    input[type="checkbox"] { accent-color: #58a6ff; }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #c9d1d9;
+      font-size: 14px;
+    }
+    .value {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #30363d;
+    }
+    .explain { width: 100%; max-width: 950px; margin: 28px auto 0; }
+    .explain .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p, .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+    .explain p { margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>光是一种波</h1>
+    <p><a href="../../index.html">← 返回首页</a></p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="wavelength">波长 λ</label>
+        <input type="range" id="wavelength" min="60" max="220" value="130" step="1">
+        <div class="value" id="wavelength-value">130 px</div>
+      </div>
+      <div class="control-group">
+        <label for="frequency">频率 f</label>
+        <input type="range" id="frequency" min="0.4" max="3" value="1.2" step="0.1">
+        <div class="value" id="frequency-value">1.2 倍</div>
+      </div>
+      <div class="control-group">
+        <label for="amplitude">振幅 A</label>
+        <input type="range" id="amplitude" min="20" max="100" value="58" step="1">
+        <div class="value" id="amplitude-value">58 px</div>
+      </div>
+      <div class="control-group">
+        <label class="check">
+          <input type="checkbox" id="show-guides" checked>
+          显示波长标尺
+        </label>
+      </div>
+      <div class="hint">
+        调节波长、频率和振幅，观察一列横波如何向右传播。光也是一种电磁波，只是振动的是电场和磁场。
+      </div>
+    </div>
+  </main>
+
+  <section class="explain">
+    <div class="card">
+      <h2>原理解析</h2>
+      <p>波长是相邻两个波峰之间的距离，频率是一秒内振动的次数，振幅表示振动的强弱。对光来说，波长决定颜色，频率越高单个光子的能量越高。这个页面先把「波」本身看清楚，为后面的光谱、干涉和双缝实验打底。</p>
+    </div>
+    <div class="card">
+      <h2>观察任务</h2>
+      <ul>
+        <li>把波长调短，看看波峰是否变得更密。</li>
+        <li>把频率调高，看看波形传播速度和相位变化是否更快。</li>
+        <li>把振幅调大，观察波峰和波谷离中心线的距离如何变化。</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="sketch.js"></script>
+</body>
+</html>

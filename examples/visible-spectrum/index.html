@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>波长与颜色</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0e1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #canvas-container { line-height: 0; }
+    .controls {
+      width: 230px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .control-group { margin-bottom: 18px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #58a6ff;
+    }
+    .value {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #30363d;
+    }
+    .explain { width: 100%; max-width: 950px; margin: 28px auto 0; }
+    .explain .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p, .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+    .explain p { margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>波长与颜色</h1>
+    <p><a href="../../index.html">← 返回首页</a></p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="wavelength">光的波长</label>
+        <input type="range" id="wavelength" min="380" max="750" value="520" step="1">
+        <div class="value" id="wavelength-value">520 nm</div>
+      </div>
+      <div class="hint">
+        可见光大约位于 380-750 nm。波长越短，频率越高，单个光子的能量也越高。颜色不是颜料的属性，而是眼睛对不同波长光的感受。
+      </div>
+    </div>
+  </main>
+
+  <section class="explain">
+    <div class="card">
+      <h2>原理解析</h2>
+      <p>同样是光，波长不同会被眼睛感受成不同颜色。红光波长较长、频率较低；紫光波长较短、频率较高。因为光子能量满足 E = hf，所以紫光单个光子的能量高于红光。这正是理解光电效应的前置知识。</p>
+    </div>
+    <div class="card">
+      <h2>观察任务</h2>
+      <ul>
+        <li>从红光滑向紫光，观察波形是否越来越密。</li>
+        <li>比较不同颜色对应的频率和相对光子能量。</li>
+        <li>回想彩虹色散：为什么白光可以被分成一条彩色光谱。</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="sketch.js"></script>
+</body>
+</html>

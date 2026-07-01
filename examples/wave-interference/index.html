@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两束光相遇：干涉</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0e1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #canvas-container { line-height: 0; }
+    .controls {
+      width: 230px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .control-group { margin-bottom: 18px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #58a6ff;
+    }
+    input[type="checkbox"] { accent-color: #58a6ff; }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #c9d1d9;
+      font-size: 14px;
+    }
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    button {
+      border: 1px solid #30363d;
+      background: #0d1117;
+      color: #c9d1d9;
+      border-radius: 8px;
+      padding: 8px 6px;
+      cursor: pointer;
+    }
+    button:hover { border-color: #58a6ff; color: #e6edf3; }
+    .value {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #30363d;
+    }
+    .explain { width: 100%; max-width: 950px; margin: 28px auto 0; }
+    .explain .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p, .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+    .explain p { margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>两束光相遇：干涉</h1>
+    <p><a href="../../index.html">← 返回首页</a></p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="phase">相位差 Δφ</label>
+        <input type="range" id="phase" min="0" max="360" value="0" step="1">
+        <div class="value" id="phase-value">0°</div>
+        <div class="button-row">
+          <button id="constructive" type="button">相长</button>
+          <button id="destructive" type="button">相消</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="wavelength">波长 λ</label>
+        <input type="range" id="wavelength" min="70" max="190" value="120" step="1">
+        <div class="value" id="wavelength-value">120 px</div>
+      </div>
+      <div class="control-group">
+        <label for="amplitude">振幅 A</label>
+        <input type="range" id="amplitude" min="15" max="55" value="34" step="1">
+        <div class="value" id="amplitude-value">34 px</div>
+      </div>
+      <div class="control-group">
+        <label class="check">
+          <input type="checkbox" id="show-components" checked>
+          显示两列原始波
+        </label>
+      </div>
+      <div class="hint">
+        两列波相遇时会叠加。同相时波峰遇波峰，合成波变强；反相时波峰遇波谷，合成波减弱甚至抵消。
+      </div>
+    </div>
+  </main>
+
+  <section class="explain">
+    <div class="card">
+      <h2>原理解析</h2>
+      <p>干涉来自波的叠加。两列光波如果同相，电场振动方向一致，会发生相长干涉；如果相差 180°，一个波峰正好遇到另一个波谷，会发生相消干涉。双缝实验中的明暗条纹，本质上就是不同位置发生了不同程度的相长和相消。</p>
+    </div>
+    <div class="card">
+      <h2>观察任务</h2>
+      <ul>
+        <li>点击相长，观察合成波的振幅是否接近两倍。</li>
+        <li>点击相消，观察两列波为什么会互相抵消。</li>
+        <li>慢慢拖动相位差，观察合成波从增强到减弱的连续变化。</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="sketch.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不同形状磁铁的磁场</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0e1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #canvas-container { line-height: 0; }
+    .controls {
+      width: 220px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .control-group { margin-bottom: 20px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #58a6ff;
+    }
+    select {
+      width: 100%;
+      padding: 6px 8px;
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .value {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #30363d;
+    }
+    .explain { width: 100%; max-width: 940px; margin: 28px auto 0; }
+    .explain .card {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+    }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p { color: #c9d1d9; line-height: 1.7; font-size: 14px; margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+    .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>不同形状磁铁的磁场</h1>
+    <p><a href="../../index.html">← 返回首页</a></p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="shape">磁铁形状</label>
+        <select id="shape">
+          <option value="bar">条形磁铁</option>
+          <option value="horseshoe">U 形磁铁</option>
+          <option value="disk">圆形磁铁</option>
+        </select>
+        <div class="value" id="shape-value">条形磁铁</div>
+      </div>
+      <div class="control-group">
+        <label for="lines">磁感线数量</label>
+        <input type="range" id="lines" min="6" max="20" value="12" step="1">
+        <div class="value" id="lines-value">12</div>
+      </div>
+      <div class="hint">
+        磁感线从 N 极（红）发出，回到 S 极（蓝），永不相交。改变形状会改变磁极排布，磁场分布也随之变化。移动鼠标可用小磁针探测某点的磁场方向。
+      </div>
+    </div>
+  </main>
+
+  <section class="explain">
+    <div class="card">
+      <h2>原理解析</h2>
+      <p>磁铁周围存在<strong>磁场</strong>，用磁感线来描述：磁感线从 <strong>N 极</strong>发出、回到 <strong>S 极</strong>，永远不相交，越密的地方磁场越强。磁铁的<strong>形状决定了两极的位置</strong>，因而决定磁场的分布——条形磁铁的场向四周对称展开，U 形磁铁则把磁场集中在两极之间的开口里，更强也更均匀。把小磁针放进磁场，它会沿着磁感线的方向排列，这正是指南针的工作原理。</p>
+    </div>
+    <div class="card">
+      <h2>生活中的例子</h2>
+      <ul>
+        <li>冰箱贴、磁性门吸、磁力积木，靠的都是磁铁的吸力。</li>
+        <li>指南针能指南北，是因为地球本身就是一个巨大的磁铁。</li>
+        <li>喇叭、耳机、电动机里都藏着磁铁，把电变成声音或转动。</li>
+        <li>把铁屑撒在磁铁周围，铁屑会排成一条条磁感线——和本演示一样。</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="sketch.js"></script>
+</body>
+</html>

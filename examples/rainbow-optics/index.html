@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>彩虹与光的色散</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0e1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #canvas-container { line-height: 0; }
+    .controls {
+      width: 220px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .control-group { margin-bottom: 20px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 14px;
+      color: #c9d1d9;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: #58a6ff;
+    }
+    .value {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #30363d;
+    }
+    .explain { width: 100%; max-width: 940px; margin: 28px auto 0; }
+    .explain .card {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+    }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p { color: #c9d1d9; line-height: 1.7; font-size: 14px; margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+    .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>彩虹与光的色散</h1>
+    <p><a href="../../index.html">← 返回首页</a></p>
+  </header>
+
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="angle">入射角度</label>
+        <input type="range" id="angle" min="10" max="75" value="45" step="1">
+        <div class="value" id="angle-value">45°</div>
+      </div>
+      <div class="hint">
+        白光进入水滴后发生折射、反射，再次折射出。红橙黄绿蓝紫各色光折射率不同，偏折角度也不同，因此被分开。
+      </div>
+    </div>
+  </main>
+
+  <section class="explain">
+    <div class="card">
+      <h2>原理解析</h2>
+      <p>白光其实是红橙黄绿蓝紫各色光的混合。当它射入小水滴时，先在水滴表面<strong>折射</strong>进去；不同颜色光的折射率不同（紫光偏折最多、红光最少），于是开始分开。光在水滴内壁<strong>反射</strong>一次后再折射射出，各色光就被拉成一道扇形光谱。天空中无数水滴各自把某一种颜色送进你的眼睛，合起来就是那道弧形的彩虹——这也是为什么彩虹总在太阳的相反方向。</p>
+    </div>
+    <div class="card">
+      <h2>生活中的例子</h2>
+      <ul>
+        <li>雨后背对太阳，或站在喷泉、瀑布的水雾旁，就能看到彩虹。</li>
+        <li>三棱镜把一束阳光分成七彩光带，是同一个道理。</li>
+        <li>钻石、水钻闪烁的彩色光，来自它对光的强烈色散。</li>
+        <li>阳光下的 CD/DVD 光盘表面会泛出彩虹般的光泽。</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="sketch.js"></script>
+</body>
+</html>
