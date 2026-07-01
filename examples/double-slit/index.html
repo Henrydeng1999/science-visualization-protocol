@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>不同形状磁铁的磁场</title>
+  <title>双缝干涉</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -30,13 +30,13 @@
     }
     #canvas-container { line-height: 0; }
     .controls {
-      width: 220px;
+      width: 230px;
       background: #161b22;
       border: 1px solid #30363d;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 20px;
     }
-    .control-group { margin-bottom: 20px; }
+    .control-group { margin-bottom: 18px; }
     .control-group:last-child { margin-bottom: 0; }
     label {
       display: block;
@@ -50,11 +50,19 @@
     }
     select {
       width: 100%;
-      padding: 6px 8px;
+      padding: 7px 8px;
       background: #0d1117;
       color: #e6edf3;
       border: 1px solid #30363d;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    input[type="checkbox"] { accent-color: #58a6ff; }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #c9d1d9;
       font-size: 14px;
     }
     .value {
@@ -70,15 +78,18 @@
       padding-top: 12px;
       border-top: 1px solid #30363d;
     }
-    .explain { width: 100%; max-width: 940px; margin: 28px auto 0; }
+    .explain { width: 100%; max-width: 950px; margin: 28px auto 0; }
     .explain .card {
-      background: #161b22; border: 1px solid #30363d;
-      border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
     }
     .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
-    .explain p { color: #c9d1d9; line-height: 1.7; font-size: 14px; margin: 0; }
+    .explain p, .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+    .explain p { margin: 0; }
     .explain ul { margin: 0; padding-left: 20px; }
-    .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
     .lesson-nav {
       width: 100%;
       max-width: 950px;
@@ -100,12 +111,13 @@
     @media (max-width: 700px) {
       .lesson-nav { flex-direction: column; }
       .lesson-nav a:last-child { text-align: left; }
-    }  </style>
+    }
+  </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
 <body>
   <header>
-    <h1>不同形状磁铁的磁场</h1>
+    <h1>双缝干涉</h1>
     <p><a href="../../index.html">← 返回首页</a></p>
   </header>
 
@@ -113,21 +125,36 @@
     <div id="canvas-container"></div>
     <div class="controls">
       <div class="control-group">
-        <label for="shape">磁铁形状</label>
-        <select id="shape">
-          <option value="bar">条形磁铁</option>
-          <option value="horseshoe">U 形磁铁</option>
-          <option value="disk">圆形磁铁</option>
-        </select>
-        <div class="value" id="shape-value">条形磁铁</div>
+        <label for="wavelength">波长 λ</label>
+        <input type="range" id="wavelength" min="18" max="52" value="32" step="1">
+        <div class="value" id="wavelength-value">32 px</div>
       </div>
       <div class="control-group">
-        <label for="lines">磁感线数量</label>
-        <input type="range" id="lines" min="6" max="20" value="12" step="1">
-        <div class="value" id="lines-value">12</div>
+        <label for="slit-distance">双缝间距 d</label>
+        <input type="range" id="slit-distance" min="42" max="140" value="82" step="1">
+        <div class="value" id="slit-distance-value">82 px</div>
+      </div>
+      <div class="control-group">
+        <label for="screen-distance">屏幕距离 L</label>
+        <input type="range" id="screen-distance" min="220" max="410" value="330" step="1">
+        <div class="value" id="screen-distance-value">330 px</div>
+      </div>
+      <div class="control-group">
+        <label for="mode">显示模式</label>
+        <select id="mode">
+          <option value="continuous">连续光</option>
+          <option value="photon">单光子累积</option>
+        </select>
+        <div class="value" id="mode-value">连续光</div>
+      </div>
+      <div class="control-group">
+        <label class="check">
+          <input type="checkbox" id="show-waves" checked>
+          显示波前
+        </label>
       </div>
       <div class="hint">
-        磁感线从 N 极（红）发出，回到 S 极（蓝），永不相交。改变形状会改变磁极排布，磁场分布也随之变化。移动鼠标可用小磁针探测某点的磁场方向。
+        双缝像两个同步波源。到屏幕某点的路程差决定两列波是相长还是相消，因此形成明暗条纹。
       </div>
     </div>
   </main>
@@ -135,22 +162,21 @@
   <section class="explain">
     <div class="card">
       <h2>原理解析</h2>
-      <p>磁铁周围存在<strong>磁场</strong>，用磁感线来描述：磁感线从 <strong>N 极</strong>发出、回到 <strong>S 极</strong>，永远不相交，越密的地方磁场越强。磁铁的<strong>形状决定了两极的位置</strong>，因而决定磁场的分布——条形磁铁的场向四周对称展开，U 形磁铁则把磁场集中在两极之间的开口里，更强也更均匀。把小磁针放进磁场，它会沿着磁感线的方向排列，这正是指南针的工作原理。</p>
+      <p>光通过两个很窄的缝后，会从两个缝分别向外传播。屏幕上某些位置，两路光的路程差刚好是整数个波长，波峰遇波峰，形成亮纹；另一些位置路程差是半个波长的奇数倍，波峰遇波谷，形成暗纹。条纹间距大约满足 Δy ≈ λL/d。</p>
     </div>
     <div class="card">
-      <h2>生活中的例子</h2>
+      <h2>观察任务</h2>
       <ul>
-        <li>冰箱贴、磁性门吸、磁力积木，靠的都是磁铁的吸力。</li>
-        <li>指南针能指南北，是因为地球本身就是一个巨大的磁铁。</li>
-        <li>喇叭、耳机、电动机里都藏着磁铁，把电变成声音或转动。</li>
-        <li>把铁屑撒在磁铁周围，铁屑会排成一条条磁感线——和本演示一样。</li>
+        <li>增大波长，观察条纹间距是否变大。</li>
+        <li>增大双缝间距，观察条纹是否变得更密。</li>
+        <li>切换到单光子累积，观察随机落点如何逐渐显出条纹。</li>
       </ul>
     </div>
   </section>
 
   <nav class="lesson-nav">
-    <a href="../electric-field/index.html">← 上一个实验<strong>点电荷的电场线</strong></a>
-    <a href="../light-wave-basics/index.html">下一个实验 →<strong>光是一种波</strong></a>
+    <a href="../wave-interference/index.html">← 上一个实验<strong>两束光相遇：干涉</strong></a>
+    <a href="../rainbow-optics/index.html">下一个实验 →<strong>彩虹与光的色散</strong></a>
   </nav>
 
   <script src="sketch.js"></script>

@@ -87,6 +87,43 @@
       font-size: 18px;
       margin: 34px 0 14px;
     }
+    .path-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 0 0 34px;
+    }
+    .path-card {
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      background: #111827;
+      padding: 18px;
+    }
+    .path-card h3 {
+      margin: 0 0 10px;
+      color: #e6edf3;
+      font-size: 17px;
+    }
+    .path-card p {
+      margin: 0 0 14px;
+      color: #8b949e;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .path-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .path-steps span {
+      border: 1px solid #2a5c8d;
+      border-radius: 999px;
+      color: #b8d9ff;
+      background: #102236;
+      padding: 4px 9px;
+      font-size: 12px;
+    }
     .experiment-list {
       list-style: none;
       padding: 0;
@@ -163,6 +200,43 @@
     <a class="secondary-action" href="examples/blackbody-radiation/index.html">进入量子入口 →</a>
   </div>
 
+  <h2 class="section-title">推荐学习路径</h2>
+  <section class="path-list">
+    <article class="path-card">
+      <h3>认识光</h3>
+      <p>从波的基本形态开始，逐步看到颜色、叠加、双缝条纹和色散。</p>
+      <div class="path-steps">
+        <span>光波</span>
+        <span>颜色</span>
+        <span>干涉</span>
+        <span>双缝</span>
+        <span>彩虹</span>
+      </div>
+      <a class="enter-action" href="examples/light-wave-basics/index.html">从这条路径开始 →</a>
+    </article>
+    <article class="path-card">
+      <h3>从经典到量子</h3>
+      <p>先建立运动、波和干涉的直观，再进入黑体辐射与能量量子化。</p>
+      <div class="path-steps">
+        <span>抛物运动</span>
+        <span>光波</span>
+        <span>双缝</span>
+        <span>黑体辐射</span>
+      </div>
+      <a class="enter-action" href="examples/projectile-motion/index.html">从经典现象开始 →</a>
+    </article>
+    <article class="path-card">
+      <h3>场的世界</h3>
+      <p>用电场线、磁感线和小磁针，把看不见的场变成可观察对象。</p>
+      <div class="path-steps">
+        <span>电场</span>
+        <span>磁场</span>
+        <span>电磁波</span>
+      </div>
+      <a class="enter-action" href="examples/electric-field/index.html">进入场的路径 →</a>
+    </article>
+  </section>
+
   <h2 class="section-title">经典力学与场</h2>
   <ul class="experiment-list">
     <li>
@@ -204,6 +278,12 @@
       <a href="examples/wave-interference/index.html">两束光相遇：干涉</a>
       <p>改变两列波的相位差，观察相长干涉和相消干涉，为双缝明暗条纹做准备。</p>
       <a class="enter-action" href="examples/wave-interference/index.html">进入实验 →</a>
+    </li>
+    <li>
+      <span class="tag">长度 m · 量子桥梁</span><br>
+      <a href="examples/double-slit/index.html">双缝干涉</a>
+      <p>调节波长、双缝间距和屏幕距离，观察明暗条纹与单光子累积如何出现。</p>
+      <a class="enter-action" href="examples/double-slit/index.html">进入实验 →</a>
     </li>
     <li>
       <span class="tag">长度 m · 光谱</span><br>

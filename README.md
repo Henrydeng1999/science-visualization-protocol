@@ -44,6 +44,7 @@ http://127.0.0.1:8080/index.html
 │   ├── workflow.md                # AI Agent 工作流
 │   ├── vision.md                  # 七个基本物理量到量子现象路线
 │   ├── deployment.md              # 部署说明
+│   ├── demo-followup-plan.md      # Demo 文案、录屏脚本与后续规划
 │   ├── teaching-guide.md          # 教师使用手册
 │   └── templates/
 │       ├── experiment-template.md # 实验方案模板
@@ -58,7 +59,8 @@ http://127.0.0.1:8080/index.html
     ├── blackbody-radiation/       # 示例 5：黑体辐射与普朗克
     ├── light-wave-basics/         # 示例 6：光是一种波
     ├── visible-spectrum/          # 示例 7：波长与颜色
-    └── wave-interference/         # 示例 8：两束光相遇：干涉
+    ├── wave-interference/         # 示例 8：两束光相遇：干涉
+    └── double-slit/               # 示例 9：双缝干涉
 ```
 
 ## 快速开始
@@ -74,6 +76,7 @@ http://127.0.0.1:8080/index.html
 - 教师：阅读 [docs/teaching-guide.md](docs/teaching-guide.md)。
 - Agent 设计：阅读 [docs/workflow.md](docs/workflow.md)。
 - 部署发布：阅读 [docs/deployment.md](docs/deployment.md)。
+- Demo 跟进：阅读 [docs/demo-followup-plan.md](docs/demo-followup-plan.md)。
 
 ## 当前示例路线
 
@@ -88,6 +91,7 @@ http://127.0.0.1:8080/index.html
 - **光是一种波**：波长、频率、振幅与传播。
 - **波长与颜色**：可见光谱、频率与单个光子能量。
 - **两束光相遇：干涉**：相长、相消与双缝实验前置概念。
+- **双缝干涉**：明暗条纹、光程差与单光子累积。
 - **彩虹与光的色散**：不同波长光在水滴中的折射差异。
 
 ### 量子入口

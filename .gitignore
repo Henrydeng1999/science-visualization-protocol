@@ -1,5 +1,7 @@
 # Local editor and assistant state
-.claude/settings.local.json
+.claude/
+CLAUDE.md
+demo/
 .vscode/
 .idea/
 
