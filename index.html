@@ -31,7 +31,44 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 34px;
+      margin-bottom: 18px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 0 34px;
+    }
+    .primary-action,
+    .secondary-action,
+    .enter-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .primary-action {
+      min-height: 44px;
+      padding: 0 18px;
+      color: #06111f;
+      background: #58a6ff;
+      border: 1px solid #7bbcff;
+    }
+    .primary-action:hover {
+      background: #7bbcff;
+    }
+    .secondary-action {
+      min-height: 44px;
+      padding: 0 16px;
+      color: #d7e7ff;
+      background: #122238;
+      border: 1px solid #2a5c8d;
+    }
+    .secondary-action:hover {
+      border-color: #58a6ff;
+      color: #ffffff;
     }
     .nav-links a {
       border: 1px solid #30363d;
@@ -59,6 +96,9 @@
       margin: 0;
     }
     .experiment-list li {
+      display: flex;
+      flex-direction: column;
+      min-height: 190px;
       padding: 20px;
       border: 1px solid #30363d;
       border-radius: 8px;
@@ -80,6 +120,7 @@
       margin: 8px 0 0;
       line-height: 1.6;
       font-size: 14px;
+      flex: 1;
     }
     .tag {
       display: inline-flex;
@@ -90,6 +131,19 @@
       padding: 3px 8px;
       font-size: 12px;
       margin-bottom: 10px;
+    }
+    .enter-action {
+      align-self: flex-start;
+      min-height: 38px;
+      margin-top: 16px;
+      padding: 0 14px;
+      color: #06111f;
+      background: #7ee787;
+      border: 1px solid #96f2a0;
+      font-size: 14px;
+    }
+    .enter-action:hover {
+      background: #96f2a0;
     }
   </style>
 </head>
@@ -104,22 +158,30 @@
     <a href="docs/workflow.md">Agent 工作流</a>
   </div>
 
+  <div class="hero-actions">
+    <a class="primary-action" href="examples/light-wave-basics/index.html">开始探索：光是一种波 →</a>
+    <a class="secondary-action" href="examples/blackbody-radiation/index.html">进入量子入口 →</a>
+  </div>
+
   <h2 class="section-title">经典力学与场</h2>
   <ul class="experiment-list">
     <li>
       <span class="tag">时间 s · 质量 kg</span><br>
       <a href="examples/projectile-motion/index.html">抛物运动</a>
       <p>改变初速度、抛出角度和重力加速度，观察小球的抛物线轨迹、水平射程和最大高度。</p>
+      <a class="enter-action" href="examples/projectile-motion/index.html">进入实验 →</a>
     </li>
     <li>
       <span class="tag">电流 A · 电荷</span><br>
       <a href="examples/electric-field/index.html">点电荷的电场线</a>
       <p>移动试探电荷，观察正电荷周围电场力的大小和方向变化。</p>
+      <a class="enter-action" href="examples/electric-field/index.html">进入实验 →</a>
     </li>
     <li>
       <span class="tag">电流 A · 磁场</span><br>
       <a href="examples/magnetic-field/index.html">不同形状磁铁的磁场</a>
       <p>切换条形、U 形、圆形磁铁，观察磁感线的分布与方向，用小磁针探测某点的磁场。</p>
+      <a class="enter-action" href="examples/magnetic-field/index.html">进入实验 →</a>
     </li>
   </ul>
 
@@ -129,21 +191,25 @@
       <span class="tag">时间 s · 长度 m</span><br>
       <a href="examples/light-wave-basics/index.html">光是一种波</a>
       <p>调节波长、频率和振幅，观察一列横波如何传播，为理解光谱、干涉和双缝实验打基础。</p>
+      <a class="enter-action" href="examples/light-wave-basics/index.html">进入实验 →</a>
     </li>
     <li>
       <span class="tag">长度 m · 发光强度 cd</span><br>
       <a href="examples/visible-spectrum/index.html">波长与颜色</a>
       <p>拖动 380-750 nm 的波长滑块，观察颜色、频率和单个光子能量如何一起变化。</p>
+      <a class="enter-action" href="examples/visible-spectrum/index.html">进入实验 →</a>
     </li>
     <li>
       <span class="tag">时间 s · 长度 m</span><br>
       <a href="examples/wave-interference/index.html">两束光相遇：干涉</a>
       <p>改变两列波的相位差，观察相长干涉和相消干涉，为双缝明暗条纹做准备。</p>
+      <a class="enter-action" href="examples/wave-interference/index.html">进入实验 →</a>
     </li>
     <li>
       <span class="tag">长度 m · 光谱</span><br>
       <a href="examples/rainbow-optics/index.html">彩虹与光的色散</a>
       <p>白光进入水滴后发生折射和色散，观察红橙黄绿蓝紫各色光的不同偏折角度。</p>
+      <a class="enter-action" href="examples/rainbow-optics/index.html">进入实验 →</a>
     </li>
   </ul>
 
@@ -153,6 +219,7 @@
       <span class="tag">热力学温度 K · 量子起点</span><br>
       <a href="examples/blackbody-radiation/index.html">黑体辐射与普朗克（量子）</a>
       <p>拖动温度，观察辐射光谱峰值左移、物体颜色变化与 T⁴ 增长，进入能量量子化概念。</p>
+      <a class="enter-action" href="examples/blackbody-radiation/index.html">进入实验 →</a>
     </li>
   </ul>
 </body>
