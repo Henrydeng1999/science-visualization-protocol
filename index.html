@@ -8,299 +8,230 @@
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 1040px;
-      margin: 44px auto;
-      padding: 0 20px 44px;
+      max-width: 1120px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 46px 20px 52px;
       background: #0d1017;
       color: #e6edf3;
     }
     h1 {
       color: #58a6ff;
       margin: 0 0 12px;
-      font-size: clamp(32px, 5vw, 54px);
+      font-size: clamp(34px, 5vw, 58px);
       line-height: 1.05;
     }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { color: #8cc8ff; }
     .subtitle {
       color: #8b949e;
-      max-width: 740px;
-      line-height: 1.7;
+      max-width: 820px;
+      line-height: 1.75;
       margin: 0 0 28px;
       font-size: 17px;
     }
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 0 0 34px;
-    }
-    .primary-action,
-    .secondary-action,
-    .enter-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .primary-action {
-      min-height: 44px;
-      padding: 0 18px;
-      color: #06111f;
-      background: #58a6ff;
-      border: 1px solid #7bbcff;
-    }
-    .primary-action:hover {
-      background: #7bbcff;
-    }
-    .secondary-action {
-      min-height: 44px;
-      padding: 0 16px;
-      color: #d7e7ff;
-      background: #122238;
-      border: 1px solid #2a5c8d;
-    }
-    .secondary-action:hover {
-      border-color: #58a6ff;
-      color: #ffffff;
-    }
-    .nav-links a {
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      color: #c9d1d9;
-      padding: 8px 12px;
-      text-decoration: none;
-      background: #161b22;
-    }
-    .nav-links a:hover {
-      border-color: #58a6ff;
-      color: #e6edf3;
-    }
-    .section-title {
-      color: #e6edf3;
-      font-size: 18px;
-      margin: 34px 0 14px;
-    }
-    .path-list {
+    .switcher {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
-      margin: 0 0 34px;
+      margin-bottom: 22px;
     }
-    .path-card {
+    .switch-card {
+      text-align: left;
+      cursor: pointer;
       border: 1px solid #30363d;
       border-radius: 8px;
       background: #111827;
-      padding: 18px;
-    }
-    .path-card h3 {
-      margin: 0 0 10px;
       color: #e6edf3;
-      font-size: 17px;
+      padding: 18px;
+      min-height: 152px;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      font: inherit;
     }
-    .path-card p {
-      margin: 0 0 14px;
+    .switch-card:hover {
+      transform: translateY(-2px);
+      border-color: #58a6ff;
+    }
+    .switch-card.active {
+      border-color: #7ee787;
+      background: #10251a;
+      box-shadow: 0 0 0 1px rgba(126, 231, 135, 0.35) inset;
+    }
+    .switch-card h2 {
+      margin: 0 0 8px;
+      color: #e6edf3;
+      font-size: 21px;
+    }
+    .switch-card p {
+      margin: 0;
       color: #8b949e;
-      line-height: 1.6;
+      line-height: 1.65;
       font-size: 14px;
     }
-    .path-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .path-steps span {
-      border: 1px solid #2a5c8d;
-      border-radius: 999px;
-      color: #b8d9ff;
-      background: #102236;
-      padding: 4px 9px;
-      font-size: 12px;
-    }
-    .experiment-list {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin: 0;
-    }
-    .experiment-list li {
-      display: flex;
-      flex-direction: column;
-      min-height: 190px;
+    .switch-card.active p { color: #b7d8c2; }
+    .panel {
+      display: none;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      background: #111827;
       padding: 20px;
+    }
+    .panel.active { display: block; }
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .panel h2 {
+      margin: 0 0 8px;
+      color: #e6edf3;
+      font-size: 22px;
+    }
+    .panel p {
+      margin: 0;
+      color: #8b949e;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .enter {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 8px;
+      border: 1px solid #96f2a0;
+      background: #7ee787;
+      color: #06111f;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+    .mini-card {
       border: 1px solid #30363d;
       border-radius: 8px;
       background: #161b22;
-      transition: border-color 0.2s, transform 0.2s;
+      padding: 14px;
+      min-height: 108px;
     }
-    .experiment-list li:hover {
-      border-color: #58a6ff;
-      transform: translateY(-2px);
+    .mini-card h3 {
+      margin: 0 0 7px;
+      color: #e6edf3;
+      font-size: 16px;
     }
-    .experiment-list a {
-      color: #58a6ff;
-      text-decoration: none;
-      font-size: 1.18em;
-      font-weight: 600;
-    }
-    .experiment-list p {
+    .mini-card p {
       color: #8b949e;
-      margin: 8px 0 0;
-      line-height: 1.6;
-      font-size: 14px;
-      flex: 1;
+      line-height: 1.55;
+      font-size: 13px;
     }
-    .tag {
+    .mini-card a {
       display: inline-flex;
-      color: #9ddcff;
-      background: #102236;
-      border: 1px solid #22476b;
-      border-radius: 999px;
-      padding: 3px 8px;
-      font-size: 12px;
-      margin-bottom: 10px;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
     }
-    .enter-action {
-      align-self: flex-start;
-      min-height: 38px;
-      margin-top: 16px;
-      padding: 0 14px;
-      color: #06111f;
-      background: #7ee787;
-      border: 1px solid #96f2a0;
+    .note {
+      margin-top: 18px;
+      color: #8b949e;
+      line-height: 1.7;
       font-size: 14px;
     }
-    .enter-action:hover {
-      background: #96f2a0;
+    @media (max-width: 720px) {
+      .switcher { grid-template-columns: 1fr; }
+      .panel-head { flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <h1>科学原理可视化</h1>
-  <p class="subtitle">面向小初高的交互式科学动画演示。以 SI 七个基本物理量为线索，从运动、场、光和热辐射等经典现象出发，逐步走向量子现象的直观理解。</p>
+  <p class="subtitle">面向小初高的交互式科学动画演示。这里是总览导航页：两个入口始终保留在顶部，点击后高亮当前入口，并在下方切换对应导航内容。</p>
 
-  <div class="nav-links">
-    <a href="docs/vision.md">项目定位</a>
-    <a href="docs/getting-started.md">学生入门</a>
-    <a href="docs/teaching-guide.md">教师手册</a>
-    <a href="docs/workflow.md">Agent 工作流</a>
-  </div>
-
-  <div class="hero-actions">
-    <a class="primary-action" href="examples/light-wave-basics/index.html">开始探索：光是一种波 →</a>
-    <a class="secondary-action" href="examples/blackbody-radiation/index.html">进入量子入口 →</a>
-  </div>
-
-  <h2 class="section-title">推荐学习路径</h2>
-  <section class="path-list">
-    <article class="path-card">
-      <h3>认识光</h3>
-      <p>从波的基本形态开始，逐步看到颜色、叠加、双缝条纹和色散。</p>
-      <div class="path-steps">
-        <span>光波</span>
-        <span>颜色</span>
-        <span>干涉</span>
-        <span>双缝</span>
-        <span>彩虹</span>
-      </div>
-      <a class="enter-action" href="examples/light-wave-basics/index.html">从这条路径开始 →</a>
-    </article>
-    <article class="path-card">
-      <h3>从经典到量子</h3>
-      <p>先建立运动、波和干涉的直观，再进入黑体辐射与能量量子化。</p>
-      <div class="path-steps">
-        <span>抛物运动</span>
-        <span>光波</span>
-        <span>双缝</span>
-        <span>黑体辐射</span>
-      </div>
-      <a class="enter-action" href="examples/projectile-motion/index.html">从经典现象开始 →</a>
-    </article>
-    <article class="path-card">
-      <h3>场的世界</h3>
-      <p>用电场线、磁感线和小磁针，把看不见的场变成可观察对象。</p>
-      <div class="path-steps">
-        <span>电场</span>
-        <span>磁场</span>
-        <span>电磁波</span>
-      </div>
-      <a class="enter-action" href="examples/electric-field/index.html">进入场的路径 →</a>
-    </article>
+  <section class="switcher" aria-label="总览入口切换">
+    <button class="switch-card active" type="button" data-panel="quantities" aria-pressed="true">
+      <h2>七大物理量总结</h2>
+      <p>按 SI 七个基本物理量组织基础实验，适合系统学习、课程化演示和查找具体知识点。</p>
+    </button>
+    <button class="switch-card" type="button" data-panel="miracles" aria-pressed="false">
+      <h2>十大物理神迹</h2>
+      <p>独立的经典实验展厅，按十个改变物理直觉的实验进入模拟，不并入七大物理量基础库。</p>
+    </button>
   </section>
 
-  <h2 class="section-title">经典力学与场</h2>
-  <ul class="experiment-list">
-    <li>
-      <span class="tag">时间 s · 质量 kg</span><br>
-      <a href="examples/projectile-motion/index.html">抛物运动</a>
-      <p>改变初速度、抛出角度和重力加速度，观察小球的抛物线轨迹、水平射程和最大高度。</p>
-      <a class="enter-action" href="examples/projectile-motion/index.html">进入实验 →</a>
-    </li>
-    <li>
-      <span class="tag">电流 A · 电荷</span><br>
-      <a href="examples/electric-field/index.html">点电荷的电场线</a>
-      <p>移动试探电荷，观察正电荷周围电场力的大小和方向变化。</p>
-      <a class="enter-action" href="examples/electric-field/index.html">进入实验 →</a>
-    </li>
-    <li>
-      <span class="tag">电流 A · 磁场</span><br>
-      <a href="examples/magnetic-field/index.html">不同形状磁铁的磁场</a>
-      <p>切换条形、U 形、圆形磁铁，观察磁感线的分布与方向，用小磁针探测某点的磁场。</p>
-      <a class="enter-action" href="examples/magnetic-field/index.html">进入实验 →</a>
-    </li>
-  </ul>
+  <section class="panel active" id="panel-quantities">
+    <div class="panel-head">
+      <div>
+        <h2>七大物理量导航</h2>
+        <p>从基本单位进入实验库：每个物理量下面是一组可运行、可调参、可观察的基础模拟。</p>
+      </div>
+      <a class="enter" href="library.html">进入完整导航页</a>
+    </div>
+    <div class="grid">
+      <article class="mini-card"><h3>时间 s</h3><p>运动、周期、波传播和概率性衰变。</p><a href="library.html">查看实验</a></article>
+      <article class="mini-card"><h3>长度 m</h3><p>波长、双缝、衍射、透镜和物质波。</p><a href="library.html">查看实验</a></article>
+      <article class="mini-card"><h3>质量 kg</h3><p>惯性、碰撞、斜面、引力和质能关系。</p><a href="library.html">查看实验</a></article>
+      <article class="mini-card"><h3>电流 A</h3><p>电场、电路、磁场和电磁感应。</p><a href="library.html">查看实验</a></article>
+      <article class="mini-card"><h3>热力学温度 K</h3><p>热运动、热传导、相变和黑体辐射。</p><a href="library.html">查看实验</a></article>
+      <article class="mini-card"><h3>物质的量 mol</h3><p>粒子数、摩尔质量、气体压强和能级布居。</p><a href="library.html">查看实验</a></article>
+      <article class="mini-card"><h3>发光强度 cd</h3><p>亮度、色散、偏振、光电效应和激光。</p><a href="library.html">查看实验</a></article>
+    </div>
+  </section>
 
-  <h2 class="section-title">光的波动性</h2>
-  <ul class="experiment-list">
-    <li>
-      <span class="tag">时间 s · 长度 m</span><br>
-      <a href="examples/light-wave-basics/index.html">光是一种波</a>
-      <p>调节波长、频率和振幅，观察一列横波如何传播，为理解光谱、干涉和双缝实验打基础。</p>
-      <a class="enter-action" href="examples/light-wave-basics/index.html">进入实验 →</a>
-    </li>
-    <li>
-      <span class="tag">长度 m · 发光强度 cd</span><br>
-      <a href="examples/visible-spectrum/index.html">波长与颜色</a>
-      <p>拖动 380-750 nm 的波长滑块，观察颜色、频率和单个光子能量如何一起变化。</p>
-      <a class="enter-action" href="examples/visible-spectrum/index.html">进入实验 →</a>
-    </li>
-    <li>
-      <span class="tag">时间 s · 长度 m</span><br>
-      <a href="examples/wave-interference/index.html">两束光相遇：干涉</a>
-      <p>改变两列波的相位差，观察相长干涉和相消干涉，为双缝明暗条纹做准备。</p>
-      <a class="enter-action" href="examples/wave-interference/index.html">进入实验 →</a>
-    </li>
-    <li>
-      <span class="tag">长度 m · 量子桥梁</span><br>
-      <a href="examples/double-slit/index.html">双缝干涉</a>
-      <p>调节波长、双缝间距和屏幕距离，观察明暗条纹与单光子累积如何出现。</p>
-      <a class="enter-action" href="examples/double-slit/index.html">进入实验 →</a>
-    </li>
-    <li>
-      <span class="tag">长度 m · 光谱</span><br>
-      <a href="examples/rainbow-optics/index.html">彩虹与光的色散</a>
-      <p>白光进入水滴后发生折射和色散，观察红橙黄绿蓝紫各色光的不同偏折角度。</p>
-      <a class="enter-action" href="examples/rainbow-optics/index.html">进入实验 →</a>
-    </li>
-  </ul>
+  <section class="panel" id="panel-miracles">
+    <div class="panel-head">
+      <div>
+        <h2>十大物理神迹导航</h2>
+        <p>这是另一个独立入口：先看十个神迹实验的导航卡片，再进入对应模拟。</p>
+      </div>
+      <a class="enter" href="examples/top-ten-physics-miracles/index.html">进入完整导航页</a>
+    </div>
+    <div class="grid">
+      <article class="mini-card"><h3>伽利略斜面</h3><p>把落体运动放慢，看到 s 与 t² 的关系。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=galileo">进入模拟</a></article>
+      <article class="mini-card"><h3>卡文迪许扭秤</h3><p>用微小扭转角称量地球。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=cavendish">进入模拟</a></article>
+      <article class="mini-card"><h3>杨氏双缝</h3><p>用明暗条纹显示光的波动性。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=double-slit">进入模拟</a></article>
+      <article class="mini-card"><h3>法拉第电磁感应</h3><p>变化的磁场产生电流。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=faraday">进入模拟</a></article>
+      <article class="mini-card"><h3>迈克耳孙-莫雷</h3><p>近乎零漂移推动光速不变思想。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=michelson">进入模拟</a></article>
+      <article class="mini-card"><h3>卢瑟福金箔</h3><p>大角度散射揭示原子核。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=rutherford">进入模拟</a></article>
+      <article class="mini-card"><h3>密立根油滴</h3><p>油滴悬停揭示电荷量子化。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=millikan">进入模拟</a></article>
+      <article class="mini-card"><h3>光电效应</h3><p>频率阈值显示光子能量。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=photoelectric">进入模拟</a></article>
+      <article class="mini-card"><h3>斯特恩-盖拉赫</h3><p>原子束分裂显示自旋离散。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=stern-gerlach">进入模拟</a></article>
+      <article class="mini-card"><h3>贝尔不等式检验</h3><p>纠缠相关超过经典上限。</p><a href="examples/top-ten-physics-miracles/simulate.html?exp=bell">进入模拟</a></article>
+    </div>
+  </section>
 
-  <h2 class="section-title">量子入口</h2>
-  <ul class="experiment-list">
-    <li>
-      <span class="tag">热力学温度 K · 量子起点</span><br>
-      <a href="examples/blackbody-radiation/index.html">黑体辐射与普朗克（量子）</a>
-      <p>拖动温度，观察辐射光谱峰值左移、物体颜色变化与 T⁴ 增长，进入能量量子化概念。</p>
-      <a class="enter-action" href="examples/blackbody-radiation/index.html">进入实验 →</a>
-    </li>
-  </ul>
+  <p class="note">当前高亮只表示正在浏览哪个入口；两个入口不会消失，可以随时在顶部来回切换。</p>
+
+  <script>
+    const switchCards = Array.from(document.querySelectorAll('.switch-card'));
+    const panels = {
+      quantities: document.querySelector('#panel-quantities'),
+      miracles: document.querySelector('#panel-miracles')
+    };
+
+    function activatePanel(name, updateHash = true) {
+      const panelName = panels[name] ? name : 'quantities';
+      switchCards.forEach((card) => {
+        const active = card.dataset.panel === panelName;
+        card.classList.toggle('active', active);
+        card.setAttribute('aria-pressed', String(active));
+      });
+      Object.entries(panels).forEach(([key, panel]) => {
+        panel.classList.toggle('active', key === panelName);
+      });
+      if (updateHash) history.replaceState(null, '', '#' + panelName);
+    }
+
+    switchCards.forEach((card) => {
+      card.addEventListener('click', () => activatePanel(card.dataset.panel));
+    });
+
+    activatePanel(location.hash.replace('#', '') || 'quantities', false);
+  </script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>完整实验库</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 1120px; margin: 42px auto; padding: 0 20px 48px; background: #0d1017; color: #e6edf3; }
+    h1 { color: #58a6ff; margin: 0 0 12px; font-size: clamp(30px, 5vw, 48px); }
+    .subtitle { color: #8b949e; max-width: 780px; line-height: 1.7; margin: 0 0 28px; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { color: #8cc8ff; }
+    .top-link { display: inline-flex; border: 1px solid #30363d; border-radius: 8px; padding: 8px 12px; color: #c9d1d9; background: #161b22; margin-bottom: 28px; }
+    .route { border: 1px solid #30363d; border-radius: 8px; background: #111827; padding: 18px; margin-bottom: 24px; }
+    .route h2 { font-size: 18px; margin: 0 0 12px; }
+    .steps { display: flex; flex-wrap: wrap; gap: 8px; }
+    .steps span { border: 1px solid #2a5c8d; border-radius: 999px; padding: 5px 10px; background: #102236; color: #b8d9ff; font-size: 13px; }
+    .library-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .library-card { border: 1px solid #30363d; border-radius: 8px; background: #161b22; padding: 18px; }
+    .library-card h2 { margin: 0 0 12px; color: #e6edf3; font-size: 18px; }
+    .library-card ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
+    .library-card li { border-bottom: 1px solid #252d3a; padding-bottom: 9px; }
+    .library-card li:last-child { border-bottom: 0; padding-bottom: 0; }
+  </style>
+</head>
+<body>
+  <a class="top-link" href="index.html">← 返回首页</a>
+  <h1>七个基本物理量完整实验库</h1>
+  <p class="subtitle">完整库以 SI 七个基本物理量为主线，每个基本量配置 5 个交互型小动画，共 35 个实验。所有实验都可以直接在浏览器中运行、调参和观察。</p>
+  <section class="route">
+    <h2>贯穿七个基本物理量的完整主线</h2>
+    <div class="steps">
+      <span>时间 s：抛物运动</span>
+      <span>质量 kg：碰撞</span>
+      <span>电流 A：电场与电路</span>
+      <span>长度 m：波长与双缝</span>
+      <span>发光强度 cd：色散与光电效应</span>
+      <span>温度 K：黑体辐射</span>
+      <span>物质的量 mol：阿伏伽德罗</span>
+    </div>
+  </section>
+  <section class="library-grid">
+    <article class="library-card">
+      <h2>时间 s</h2>
+      <ul>
+        <li><a href="examples/projectile-motion/index.html">抛物运动</a></li>
+        <li><a href="examples/pendulum-period/index.html">单摆周期</a></li>
+        <li><a href="examples/spring-oscillator/index.html">弹簧振子</a></li>
+        <li><a href="examples/light-wave-basics/index.html">波传播</a></li>
+        <li><a href="examples/radioactive-decay/index.html">放射性衰变</a></li>
+      </ul>
+    </article>
+    <article class="library-card">
+      <h2>长度 m</h2>
+      <ul>
+        <li><a href="examples/visible-spectrum/index.html">波长与颜色</a></li>
+        <li><a href="examples/double-slit/index.html">双缝干涉</a></li>
+        <li><a href="examples/diffraction/index.html">衍射</a></li>
+        <li><a href="examples/lens-imaging/index.html">透镜成像</a></li>
+        <li><a href="examples/de-broglie-wavelength/index.html">德布罗意波长</a></li>
+      </ul>
+    </article>
+    <article class="library-card">
+      <h2>质量 kg</h2>
+      <ul>
+        <li><a href="examples/projectile-motion/index.html">抛物运动</a></li>
+        <li><a href="examples/momentum-collision/index.html">碰撞与动量守恒</a></li>
+        <li><a href="examples/inclined-plane/index.html">斜面运动</a></li>
+        <li><a href="examples/gravity-law/index.html">万有引力</a></li>
+        <li><a href="examples/gravity-gradiometer/index.html">重力梯度仪原理</a></li>
+        <li><a href="examples/mass-energy/index.html">质能关系示意</a></li>
+      </ul>
+    </article>
+    <article class="library-card">
+      <h2>电流 A</h2>
+      <ul>
+        <li><a href="examples/electric-field/index.html">点电荷的电场线</a></li>
+        <li><a href="examples/simple-circuit/index.html">简单电路</a></li>
+        <li><a href="examples/wire-magnetic-field/index.html">通电导线磁场</a></li>
+        <li><a href="examples/solenoid-field/index.html">螺线管磁场</a></li>
+        <li><a href="examples/electromagnetic-induction/index.html">电磁感应</a></li>
+      </ul>
+    </article>
+    <article class="library-card">
+      <h2>热力学温度 K</h2>
+      <ul>
+        <li><a href="examples/gas-molecular-motion/index.html">气体分子热运动</a></li>
+        <li><a href="examples/heat-conduction/index.html">热传导</a></li>
+        <li><a href="examples/phase-change/index.html">相变</a></li>
+        <li><a href="examples/maxwell-speed-distribution/index.html">麦克斯韦速度分布</a></li>
+        <li><a href="examples/blackbody-radiation/index.html">黑体辐射</a></li>
+      </ul>
+    </article>
+    <article class="library-card">
+      <h2>物质的量 mol</h2>
+      <ul>
+        <li><a href="examples/avogadro-constant/index.html">阿伏伽德罗常数</a></li>
+        <li><a href="examples/molar-mass/index.html">摩尔质量换算</a></li>
+        <li><a href="examples/gas-pressure-particles/index.html">气体粒子数与压强</a></li>
+        <li><a href="examples/reaction-stoichiometry/index.html">化学反应配比</a></li>
+        <li><a href="examples/energy-level-population/index.html">能级布居</a></li>
+      </ul>
+    </article>
+    <article class="library-card">
+      <h2>发光强度 cd</h2>
+      <ul>
+        <li><a href="examples/inverse-square-light/index.html">距离与亮度平方反比</a></li>
+        <li><a href="examples/rainbow-optics/index.html">光的色散</a></li>
+        <li><a href="examples/polarization/index.html">偏振</a></li>
+        <li><a href="examples/photoelectric-effect/index.html">光电效应</a></li>
+        <li><a href="examples/laser-vs-light/index.html">激光与普通光</a></li>
+      </ul>
+    </article>
+  </section>
+</body>
+</html>

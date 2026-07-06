@@ -48,6 +48,14 @@
       width: 100%;
       accent-color: #58a6ff;
     }
+    select {
+      width: 100%;
+      background: #0d1117;
+      color: #c9d1d9;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 9px 10px;
+    }
     .value {
       font-size: 13px;
       color: #8b949e;
@@ -92,24 +100,49 @@
       .lesson-nav { flex-direction: column; }
       .lesson-nav a:last-child { text-align: left; }
     }  </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="../../vendor/p5.min.js"></script>
 </head>
 <body>
   <header>
     <h1>点电荷的电场线</h1>
-    <p><a href="../../index.html">← 返回首页</a></p>
+    <p><a href="../../library.html">← 返回实验库</a></p>
   </header>
 
   <main>
     <div id="canvas-container"></div>
     <div class="controls">
       <div class="control-group">
-        <label for="charge">中心电荷量</label>
+        <label for="field-mode">电荷场景</label>
+        <select id="field-mode">
+          <option value="single">单个中心电荷</option>
+          <option value="dipole">电偶极子</option>
+          <option value="same">同号双电荷</option>
+        </select>
+        <div class="value" id="field-mode-value">单个中心电荷</div>
+      </div>
+      <div class="control-group">
+        <label for="source-sign">中心电荷性质</label>
+        <select id="source-sign">
+          <option value="1">正电荷 +</option>
+          <option value="-1">负电荷 -</option>
+        </select>
+        <div class="value" id="source-sign-value">正电荷 +</div>
+      </div>
+      <div class="control-group">
+        <label for="test-sign">试探电荷性质</label>
+        <select id="test-sign">
+          <option value="1">正试探电荷 +</option>
+          <option value="-1">负试探电荷 -</option>
+        </select>
+        <div class="value" id="test-sign-value">正试探电荷 +</div>
+      </div>
+      <div class="control-group">
+        <label for="charge">中心电荷量大小</label>
         <input type="range" id="charge" min="1" max="20" value="10" step="1">
         <div class="value" id="charge-value">10</div>
       </div>
       <div class="hint">
-        移动鼠标改变试探电荷位置。电场力随距离增大而减小，随电荷量增大而增大。
+        移动鼠标改变试探电荷位置。E 表示电场方向，F 表示当前试探电荷受到的力。
       </div>
     </div>
   </main>
@@ -117,7 +150,7 @@
   <section class="explain">
     <div class="card">
       <h2>原理解析</h2>
-      <p>电荷周围存在<strong>电场</strong>，可以用电场线来描述：电场线从正电荷发出、回到负电荷，越密的地方电场越强。把另一个电荷放进这个场里，它就会受到力——<strong>同号相斥、异号相吸</strong>。这个力随电荷量增大而增大，随距离增大而<strong>迅速减小</strong>（距离变 2 倍，力变成 1/4，即平方反比）。本演示里中心是正电荷，移动鼠标就能看到试探电荷在不同位置受力的大小和方向变化。</p>
+      <p>电荷周围存在<strong>电场</strong>，可以用电场线来描述：正电荷的电场线向外，负电荷的电场线向内。多个电荷的场线在这里采用教学示意画法，强调整体形状、对称性和方向关系：电偶极子从正电荷指向负电荷，同号双电荷在中间互相排斥。正试探电荷受力方向与电场方向相同，负试探电荷受力方向与电场方向相反。</p>
     </div>
     <div class="card">
       <h2>生活中的例子</h2>
@@ -131,10 +164,11 @@
   </section>
 
   <nav class="lesson-nav">
-    <a href="../projectile-motion/index.html">← 上一个实验<strong>抛物运动</strong></a>
-    <a href="../magnetic-field/index.html">下一个实验 →<strong>不同形状磁铁的磁场</strong></a>
+    <a href="../mass-energy/index.html">← 上一个实验<strong>质能关系示意</strong></a>
+    <a href="../simple-circuit/index.html">下一个实验 →<strong>简单电路</strong></a>
   </nav>
 
-  <script src="sketch.js"></script>
+  <script src="../../vendor/control-fix.js"></script>
+  <script src="sketch.js?v=integral-fields-4"></script>
 </body>
 </html>

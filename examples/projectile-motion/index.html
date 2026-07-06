@@ -92,12 +92,12 @@
       .lesson-nav { flex-direction: column; }
       .lesson-nav a:last-child { text-align: left; }
     }  </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="../../vendor/p5.min.js"></script>
 </head>
 <body>
   <header>
     <h1>抛物运动</h1>
-    <p><a href="../../index.html">← 返回首页</a></p>
+    <p><a href="../../library.html">← 返回实验库</a></p>
   </header>
 
   <main>
@@ -105,8 +105,8 @@
     <div class="controls">
       <div class="control-group">
         <label for="v0">初速度</label>
-        <input type="range" id="v0" min="10" max="100" value="50" step="1">
-        <div class="value" id="v0-value">50 m/s</div>
+        <input type="range" id="v0" min="8" max="55" value="32" step="1">
+        <div class="value" id="v0-value">32 m/s</div>
       </div>
       <div class="control-group">
         <label for="angle">抛出角度</label>
@@ -115,7 +115,7 @@
       </div>
       <div class="control-group">
         <label for="g">重力加速度</label>
-        <input type="range" id="g" min="1" max="20" value="9.8" step="0.1">
+        <input type="range" id="g" min="5" max="20" value="9.8" step="0.1">
         <div class="value" id="g-value">9.8 m/s²</div>
       </div>
       <div class="hint">
@@ -141,10 +141,11 @@
   </section>
 
   <nav class="lesson-nav">
-    <a href="../../index.html">← 上一个实验<strong>实验首页</strong></a>
-    <a href="../electric-field/index.html">下一个实验 →<strong>点电荷的电场线</strong></a>
+    <a href="../laser-vs-light/index.html">← 上一个实验<strong>激光与普通光</strong></a>
+    <a href="../pendulum-period/index.html">下一个实验 →<strong>单摆周期</strong></a>
   </nav>
 
-  <script src="sketch.js"></script>
+  <script src="../../vendor/control-fix.js"></script>
+  <script src="sketch.js?v=fixed-scale-1"></script>
 </body>
 </html>

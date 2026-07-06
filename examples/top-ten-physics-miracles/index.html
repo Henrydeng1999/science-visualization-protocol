@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>十大物理神迹导航</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 1120px;
+      margin: 42px auto;
+      padding: 0 20px 48px;
+      background: #0d1017;
+      color: #e6edf3;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { color: #8cc8ff; }
+    .top-link {
+      display: inline-flex;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #c9d1d9;
+      background: #161b22;
+      margin-bottom: 28px;
+    }
+    h1 {
+      color: #58a6ff;
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.08;
+    }
+    .subtitle {
+      color: #8b949e;
+      max-width: 780px;
+      line-height: 1.7;
+      margin: 0 0 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      background: #161b22;
+      padding: 18px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #58a6ff;
+    }
+    .card.active {
+      border-color: #7ee787;
+      background: #10251a;
+      box-shadow: 0 0 0 1px rgba(126, 231, 135, 0.35) inset;
+    }
+    .card h2 {
+      margin: 0 0 8px;
+      color: #e6edf3;
+      font-size: 18px;
+    }
+    .tag {
+      align-self: flex-start;
+      border: 1px solid #2a5c8d;
+      border-radius: 999px;
+      background: #102236;
+      color: #b8d9ff;
+      padding: 4px 9px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .card p {
+      color: #8b949e;
+      line-height: 1.65;
+      margin: 0 0 16px;
+      font-size: 14px;
+      flex: 1;
+    }
+    .enter {
+      align-self: flex-start;
+      display: inline-flex;
+      min-height: 38px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 13px;
+      border-radius: 8px;
+      border: 1px solid #96f2a0;
+      background: #7ee787;
+      color: #06111f;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <a class="top-link" href="../../index.html">← 返回总览导航</a>
+  <h1>十大物理神迹导航</h1>
+  <p class="subtitle">这是独立于七大物理量总结的经典实验入口。每张卡片进入同一个互动模拟器，并自动切换到对应实验。</p>
+
+  <section class="grid">
+    <article class="card" data-exp="galileo">
+      <span class="tag">经典力学</span>
+      <h2>1. 伽利略斜面</h2>
+      <p>用斜面把落体运动放慢，观察距离随时间平方增长的规律。</p>
+      <a class="enter" href="simulate.html?exp=galileo">进入实验</a>
+    </article>
+    <article class="card" data-exp="cavendish">
+      <span class="tag">引力测量</span>
+      <h2>2. 卡文迪许扭秤</h2>
+      <p>用微小扭转角测量万有引力，第一次把“称量地球”变成实验。</p>
+      <a class="enter" href="simulate.html?exp=cavendish">进入实验</a>
+    </article>
+    <article class="card" data-exp="double-slit">
+      <span class="tag">波动光学</span>
+      <h2>3. 杨氏双缝</h2>
+      <p>两条路径叠加形成明暗条纹，直观显示光的波动性。</p>
+      <a class="enter" href="simulate.html?exp=double-slit">进入实验</a>
+    </article>
+    <article class="card" data-exp="faraday">
+      <span class="tag">电磁统一</span>
+      <h2>4. 法拉第电磁感应</h2>
+      <p>磁通量变化产生感应电流，把运动、磁场和电路连在一起。</p>
+      <a class="enter" href="simulate.html?exp=faraday">进入实验</a>
+    </article>
+    <article class="card" data-exp="michelson">
+      <span class="tag">相对论前夜</span>
+      <h2>5. 迈克耳孙-莫雷</h2>
+      <p>寻找以太风却得到近乎零漂移，为光速不变和相对论铺路。</p>
+      <a class="enter" href="simulate.html?exp=michelson">进入实验</a>
+    </article>
+    <article class="card" data-exp="rutherford">
+      <span class="tag">原子结构</span>
+      <h2>6. 卢瑟福金箔</h2>
+      <p>少数 α 粒子大角度偏转，揭示原子中心存在小而重的原子核。</p>
+      <a class="enter" href="simulate.html?exp=rutherford">进入实验</a>
+    </article>
+    <article class="card" data-exp="millikan">
+      <span class="tag">电荷量子化</span>
+      <h2>7. 密立根油滴</h2>
+      <p>让油滴在电场中悬停，发现电荷总是基本电荷的整数倍。</p>
+      <a class="enter" href="simulate.html?exp=millikan">进入实验</a>
+    </article>
+    <article class="card" data-exp="photoelectric">
+      <span class="tag">量子起点</span>
+      <h2>8. 光电效应</h2>
+      <p>频率决定能否打出电子，强度主要决定电子数量，光子概念登场。</p>
+      <a class="enter" href="simulate.html?exp=photoelectric">进入实验</a>
+    </article>
+    <article class="card" data-exp="stern-gerlach">
+      <span class="tag">自旋测量</span>
+      <h2>9. 斯特恩-盖拉赫</h2>
+      <p>原子束分裂成两个离散结果，显示微观角动量不是连续取值。</p>
+      <a class="enter" href="simulate.html?exp=stern-gerlach">进入实验</a>
+    </article>
+    <article class="card" data-exp="bell">
+      <span class="tag">量子纠缠</span>
+      <h2>10. 贝尔不等式检验</h2>
+      <p>纠缠粒子的相关性超过经典局域隐变量上限，改变对现实的直觉。</p>
+      <a class="enter" href="simulate.html?exp=bell">进入实验</a>
+    </article>
+  </section>
+  <script>
+    const cards = Array.from(document.querySelectorAll('.card[data-exp]'));
+    const current = location.hash.replace('#', '') || sessionStorage.getItem('selectedMiracle') || '';
+
+    function highlight(exp) {
+      cards.forEach((card) => card.classList.toggle('active', card.dataset.exp === exp));
+      if (exp) sessionStorage.setItem('selectedMiracle', exp);
+    }
+
+    cards.forEach((card) => {
+      const link = card.querySelector('a');
+      link.addEventListener('click', () => {
+        highlight(card.dataset.exp);
+        sessionStorage.setItem('selectedMiracle', card.dataset.exp);
+      });
+    });
+
+    highlight(current);
+  </script>
+</body>
+</html>

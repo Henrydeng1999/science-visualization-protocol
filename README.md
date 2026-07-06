@@ -1,6 +1,6 @@
 # 科学原理可视化原型项目
 
-面向小初高学生，用自然语言描述科学现象，AI 生成可交互的 p5.js 动画演示。
+面向小初高学生，用自然语言描述科学现象，AI 生成或扩展可交互的 p5.js 动画演示。
 
 ## 项目定位
 
@@ -39,12 +39,16 @@ http://127.0.0.1:8080/index.html
 ```
 .
 ├── README.md                      # 项目总览
+├── index.html                     # 总览导航页：两个入口可高亮切换
+├── library.html                   # 七个基本物理量总结入口
 ├── docs/
 │   ├── getting-started.md         # 学生快速入门
 │   ├── workflow.md                # AI Agent 工作流
+│   ├── agent-handoff.md           # AI Agent 接手说明
 │   ├── vision.md                  # 七个基本物理量到量子现象路线
 │   ├── deployment.md              # 部署说明
 │   ├── demo-followup-plan.md      # Demo 文案、录屏脚本与后续规划
+│   ├── full-experiment-library.md # 七个基本物理量完整实验库规划
 │   ├── teaching-guide.md          # 教师使用手册
 │   └── templates/
 │       ├── experiment-template.md # 实验方案模板
@@ -52,15 +56,8 @@ http://127.0.0.1:8080/index.html
 ├── templates/
 │   └── p5js-starter.js            # p5.js 起步代码
 └── examples/
-    ├── rainbow-optics/            # 示例 1：彩虹折射
-    ├── projectile-motion/         # 示例 2：抛物运动
-    ├── electric-field/            # 示例 3：电场线
-    ├── magnetic-field/            # 示例 4：不同形状磁铁的磁场
-    ├── blackbody-radiation/       # 示例 5：黑体辐射与普朗克
-    ├── light-wave-basics/         # 示例 6：光是一种波
-    ├── visible-spectrum/          # 示例 7：波长与颜色
-    ├── wave-interference/         # 示例 8：两束光相遇：干涉
-    └── double-slit/               # 示例 9：双缝干涉
+    ├── */                         # 七大物理量基础实验，每个目录含 index.html / sketch.js / README.md
+    └── top-ten-physics-miracles/  # 独立入口：十大物理神迹导航与模拟
 ```
 
 ## 快速开始
@@ -75,25 +72,34 @@ http://127.0.0.1:8080/index.html
 - 学生：阅读 [docs/getting-started.md](docs/getting-started.md)。
 - 教师：阅读 [docs/teaching-guide.md](docs/teaching-guide.md)。
 - Agent 设计：阅读 [docs/workflow.md](docs/workflow.md)。
+- Agent 接手：阅读 [docs/agent-handoff.md](docs/agent-handoff.md)。
 - 部署发布：阅读 [docs/deployment.md](docs/deployment.md)。
 - Demo 跟进：阅读 [docs/demo-followup-plan.md](docs/demo-followup-plan.md)。
+- 完整实验库：阅读 [docs/full-experiment-library.md](docs/full-experiment-library.md)。
 
-## 当前示例路线
+## 入口组织
 
-### 经典力学与场
+首页是总览导航页，保留两个始终可见、可高亮切换的入口：
 
-- **抛物运动**：时间、速度、重力与轨迹。
-- **点电荷的电场线**：电场方向、距离与力的大小。
-- **不同形状磁铁的磁场**：磁极排布如何改变磁感线。
+1. **七大物理量总结**：把基础实验统一整理到 SI 七个基本物理量下，作为系统学习和课程化使用的主入口。
+2. **十大物理神迹实验模拟**：独立于七大物理量基础库，用一个可切换的互动展厅总览十个改变物理直觉的经典实验。
 
-### 光的波动性
+点击任一入口后，该入口会高亮，下方内容切换到对应导航预览；两个入口不会消失，可以随时来回切换。完整导航页分别是 `library.html` 和 `examples/top-ten-physics-miracles/index.html`。
 
-- **光是一种波**：波长、频率、振幅与传播。
-- **波长与颜色**：可见光谱、频率与单个光子能量。
-- **两束光相遇：干涉**：相长、相消与双缝实验前置概念。
-- **双缝干涉**：明暗条纹、光程差与单光子累积。
-- **彩虹与光的色散**：不同波长光在水滴中的折射差异。
+七大物理量基础实验完整清单见 [docs/full-experiment-library.md](docs/full-experiment-library.md)。
 
-### 量子入口
+### 七大物理量总结
 
-- **黑体辐射与普朗克**：从热辐射曲线进入能量量子化。
+- **时间 s**：抛物运动、单摆周期、弹簧振子、波传播、放射性衰变。
+- **长度 m**：波长与颜色、双缝干涉、衍射、透镜成像、德布罗意波长。
+- **质量 kg**：抛物运动、碰撞与动量守恒、斜面运动、万有引力、质能关系示意。
+- **电流 A**：点电荷的电场线、简单电路、通电导线磁场、螺线管磁场、电磁感应。
+- **热力学温度 K**：气体分子热运动、热传导、相变、麦克斯韦速度分布、黑体辐射。
+- **物质的量 mol**：阿伏伽德罗常数、摩尔质量换算、气体粒子数与压强、化学反应配比、能级布居。
+- **发光强度 cd**：距离与亮度平方反比、光的色散、偏振、光电效应、激光与普通光。
+
+### 十大物理神迹独立入口
+
+- **导航页面**：[examples/top-ten-physics-miracles/index.html](examples/top-ten-physics-miracles/index.html)
+- **模拟页面**：[examples/top-ten-physics-miracles/simulate.html](examples/top-ten-physics-miracles/simulate.html)
+- **包含实验**：伽利略斜面、卡文迪许扭秤、杨氏双缝、法拉第电磁感应、迈克耳孙-莫雷、卢瑟福金箔、密立根油滴、光电效应、斯特恩-盖拉赫、贝尔不等式检验。

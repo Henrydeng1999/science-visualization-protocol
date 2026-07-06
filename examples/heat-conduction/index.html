@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>热传导</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px; background: #0a0e1a; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: #58a6ff; margin: 0 0 8px 0; }
+    a { color: #8b949e; text-decoration: none; }
+    a:hover { color: #58a6ff; }
+    main { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+    #canvas-container { line-height: 0; }
+    canvas { max-width: 100%; height: auto; }
+    .controls { width: 230px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; }
+    .control-group { margin-bottom: 18px; }
+    .control-group:last-child { margin-bottom: 0; }
+    label { display: block; font-size: 14px; color: #c9d1d9; margin-bottom: 8px; }
+    input[type="range"] { width: 100%; accent-color: #58a6ff; }
+    .value { font-size: 13px; color: #8b949e; margin-top: 4px; }
+    .hint { font-size: 13px; color: #8b949e; line-height: 1.5; margin-top: 12px; padding-top: 12px; border-top: 1px solid #30363d; }
+    .explain { width: 100%; max-width: 950px; margin: 28px auto 0; }
+    .explain .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 18px 22px; margin-bottom: 16px; }
+    .explain h2 { color: #58a6ff; font-size: 1.05em; margin: 0 0 10px; }
+    .explain p, .explain li { color: #c9d1d9; line-height: 1.7; font-size: 14px; }
+    .explain p { margin: 0; }
+    .explain ul { margin: 0; padding-left: 20px; }
+    .lesson-nav { width: 100%; max-width: 950px; display: flex; justify-content: space-between; gap: 12px; margin: 26px auto 0; }
+    .lesson-nav a { flex: 1; border: 1px solid #30363d; border-radius: 8px; background: #161b22; padding: 12px 14px; color: #c9d1d9; }
+    .lesson-nav a:last-child { text-align: right; }
+    .lesson-nav strong { display: block; color: #58a6ff; margin-top: 4px; }
+    @media (max-width: 700px) { .lesson-nav { flex-direction: column; } .lesson-nav a:last-child { text-align: left; } }
+  </style>
+  <script src="../../vendor/p5.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>热传导</h1>
+    <p><a href="../../library.html">← 返回实验库</a></p>
+  </header>
+  <main>
+    <div id="canvas-container"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label for="hot">热端温度</label>
+        <input type="range" id="hot" min="40" max="180" value="140" step="1">
+        <div class="value" id="hot-value">140 °C</div>
+      </div>
+      <div class="control-group">
+        <label for="cold">冷端温度</label>
+        <input type="range" id="cold" min="0" max="80" value="24" step="1">
+        <div class="value" id="cold-value">24 °C</div>
+      </div>
+      <div class="control-group">
+        <label for="conductivity">导热率</label>
+        <input type="range" id="conductivity" min="0.1" max="1" value="0.45" step="0.05">
+        <div class="value" id="conductivity-value">0.45 </div>
+      </div>
+      <div class="hint">热量会从高温区域传向低温区域，导热率越高，温度变化传播越快。</div>
+    </div>
+  </main>
+  <section class="explain">
+    <div class="card"><h2>原理解析</h2><p>热量会从高温区域传向低温区域，导热率越高，温度变化传播越快。</p></div>
+    <div class="card"><h2>观察任务</h2><ul><li>拖动参数，观察图形、读数或分布如何变化。</li><li>比较参数变大和变小时，现象趋势是否符合原理。</li><li>思考这个实验主要关联的基本物理量：热力学温度 K。</li></ul></div>
+  </section>
+  <nav class="lesson-nav">
+    <a href="../gas-molecular-motion/index.html">← 上一个实验<strong>气体分子热运动</strong></a>
+    <a href="../phase-change/index.html">下一个实验 →<strong>相变过程</strong></a>
+  </nav>
+  <script src="../../vendor/control-fix.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>
